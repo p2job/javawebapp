@@ -1,0 +1,32 @@
+  <%@ page contentType="text/html;charset=UTF-8"%>
+  <%@ page import="java.sql.*"  %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+	Connection connect = null;
+	Statement s= null;
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		connect =  DriverManager.getConnection("jdbc:mysql://localhost/emplpoyee" +
+				"?user=root&password=");
+		s = connect.createStatement();
+		String sql="INSERT INTO `employee`(`ID`, `Identification_No`, `Name_Prefix`, `First_Name`, `Last_Name`, `First_Name_Eng`, `Last_Name_Eng`, `Sex`, `Birth_Date`, `Phone_Number`, `Hire_Date`, `Probation_Date`, `Position_ID`, `Department_ID`, `Status`, `Salary`, `Create_Date`, `Update_Date`)"+
+		" VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18])";
+		s.execute(sql);
+		out.println("successfully");
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		out.println(e.getMessage());
+		e.printStackTrace();
+	}
+	
+	%>
+</body>
+</html>

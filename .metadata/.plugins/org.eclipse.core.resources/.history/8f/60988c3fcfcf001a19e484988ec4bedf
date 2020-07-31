@@ -1,0 +1,33 @@
+  <%@ page contentType="text/html;charset=UTF-8"%>
+  <%@ page import="java.sql.*"  %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+	Connection connect = null;
+	Statement s= null;
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		connect =  DriverManager.getConnection("jdbc:mysql://localhost/emplpoyee" +
+				"?user=root&password=");
+		s = connect.createStatement();
+		String sql="INSERT INTO `employee`(`ID`, `Identification_No`, `Name_Prefix`, `First_Name`, `Last_Name`, `First_Name_Eng`, `Last_Name_Eng`, `Sex`, `Birth_Date`, `Phone_Number`, `Hire_Date`, `Probation_Date`, `Position_ID`, `Department_ID`, `Status`, `Salary`)"+
+		" VALUES ('"+request.getParameter("Name_Prefix")+"','"+request.getParameter("First_Name")+"','"+request.getParameter("Last_Name")+"','"+request.getParameter("First_Name_Eng")+"','"+request.getParameter("Last_Name_Eng")+"','"+request.getParameter("Sex")+"','"+request.getParameter("Birth_Date")+"','"+request.getParameter("Phone_Number")+"','"+request.getParameter("Hire_Date")+"',"+
+				"'"+request.getParameter("Probation_Date")+"','"+request.getParameter("Position_ID")+"','"+request.getParameter("Department_ID")+"','"+request.getParameter("Status")+"','"+request.getParameter("Salary")+"')";
+		s.execute(sql);
+		out.println("successfully");
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		out.println(e.getMessage());
+		e.printStackTrace();
+	}
+	
+	%>
+</body>
+</html>

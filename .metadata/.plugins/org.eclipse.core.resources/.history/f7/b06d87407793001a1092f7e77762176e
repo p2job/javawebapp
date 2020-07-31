@@ -1,0 +1,20 @@
+<%@page import="demoweb.Utilty"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>welcome to website </title>
+</head>
+<body>
+<!-- display Hollo Word on Wed -->
+	<h1>Hollo Word</h1>
+	<!-- display message -->
+	<% out.println("<h2 style='color:red;'> Phongsakon BOONOI</h2>"); %>
+	<%= demoweb.Utilty %><br>
+	<%= new Date() %><br>
+	<%= new String("Phongsakon Boonsoi") %>
+</body>
+</html>

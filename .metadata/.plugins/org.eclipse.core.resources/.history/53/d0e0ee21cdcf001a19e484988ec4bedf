@@ -1,0 +1,37 @@
+  <%@ page contentType="text/html;charset=UTF-8"%>
+  <%@ page import="java.sql.*"  %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+	Connection connect = null;
+	ResultSet rec = null;
+	Statement s= null;
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		connect =  DriverManager.getConnection("jdbc:mysql://localhost/emplpoyee" +
+				"?user=root&password=");
+		s = connect.createStatement();
+		String sql="SELECT * FROM departmen";
+		rec=s.executeQuery(sql);
+
+		if(connect != null){
+			System.out.println("Database Connected.");
+		} else {
+			System.out.println("Database Connect Failed.");
+		}
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		out.println(e.getMessage());
+		e.printStackTrace();
+	}
+	
+	%>
+</body>
+</html>
